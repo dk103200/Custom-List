@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#DDD"
+    android:padding="10dp"
     android:orientation="vertical">
     <ImageView
         android:layout_width="75dp"
@@ -10,8 +11,8 @@
         android:id="@+id/img"
         android:background="#FFF"
         />
-    <LinearLayout
-        android:layout_width="wrap_content"
+    <RelativeLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:padding="10dp"
@@ -35,9 +36,19 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Medium Text"
-
+            android:layout_below="@id/txtName"
             android:textColor="#444" />
-    </LinearLayout>
+        <TextView
+            android:id="@+id/areaTv"
+            android:text="time"
+            android:textColor="#000"
+            android:layout_alignParentRight="true"
+            android:layout_below="@id/txtName"
+            android:layout_width="wrap_content"
+            android:layout_marginRight="10dp"
+            android:textSize="12sp"
+            android:layout_height="wrap_content" />
+    </RelativeLayout>
 
 
 </RelativeLayout>

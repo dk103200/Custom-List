@@ -13,45 +13,57 @@ import org.w3c.dom.Text;
 import java.util.ArrayList;
 
 public class Adapter extends BaseAdapter {
-    Context myContext;
-    int myLayout;
+    Context context;
+    int[] images;
+    String[] courseName;
+
+    LayoutInflater inflater = null;
+
+
     ArrayList<Course> arrayCourse;
 
-    public Adapter(Context context, int layout, ArrayList<Course> courseList){
-        myContext = context;
-        myLayout = layout;
-        arrayCourse = courseList;
+    public Adapter(Context context, int[] images,String[] courseName){
+        this.context = context;
+        this.images = images;
+        this.courseName = courseName;
+        inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
     @Override
     public int getCount() {
-        return arrayCourse.size();
+        return courseName.length;
     }
 
     @Override
-    public Object getItem(int position) {
+    public Object getItem(int i) {
         return null;
     }
 
     @Override
-    public long getItemId(int position) {
-        return 0;
+    public long getItemId(int i) {
+        return i;
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
-        LayoutInflater inflater = (LayoutInflater) myContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        convertView = inflater.inflate(myLayout,null,true);
+    public View getView(int position, View view, ViewGroup parent) {
+        View courseIt = inflater.inflate(R.layout.row_course, null);
 
-        TextView txtName = (TextView) convertView.findViewById(R.id.txtName);
-        txtName.setText(arrayCourse.get(position).hoTen);
+        ImageView img = (ImageView) courseIt.findViewById(R.id.img);
+        TextView txtName = (TextView) courseIt.findViewById(R.id.txtName);
+        txtName.setText(courseName[position]);
+        img.setImageResource(images[position]);
 
-        TextView txtDetail = (TextView) convertView.findViewById(R.id.txtdetail);
-        txtDetail.setText(String.valueOf(arrayCourse.get(position).gia));
+        return courseIt;
 
-        ImageView img = (ImageView) convertView.findViewById(R.id.img);
-        img.setImageResource(arrayCourse.get(position).hinh);
 
-        return convertView;
+
+//
+//        TextView txtDetail = (TextView) convertView.findViewById(R.id.txtdetail);
+//        txtDetail.setText(String.valueOf(arrayCourse.get(position).gia));
+//
+//
+//
+
+
     }
 }
